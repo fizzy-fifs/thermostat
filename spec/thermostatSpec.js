@@ -42,5 +42,29 @@ describe('Thermostat', () => {
     thermostat.offPowerSavingMode()
     expect(thermostat.powerSavingMode).toBe(false)
   })
+
+  it('can turn on power saving mode', () => {
+    thermostat.offPowerSavingMode()
+    thermostat.onPowerSavingMode()
+    expect(thermostat.powerSavingMode).toBe(true)
+  })
+
+  it('has a max. temperature when power saving mode is off', () => {
+    thermostat.offPowerSavingMode()
+    expect(thermostat.powerSavingMode).toBe(false)
+    
+    for(let i=0; i<17; i++){
+      thermostat.up()
+    }
+    
+    expect(thermostat.temperature).toEqual(32)
+  })
+
+  it('has a reset function', () => {
+    thermostat.reset()
+    expect(thermostat.temperature).toEqual(20)
+  })
+  
+  
 }) 
 

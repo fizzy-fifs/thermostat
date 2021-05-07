@@ -9,13 +9,15 @@ class Thermostat{
     if (this.powerSavingMode){
       if(this.temperature < 25) {
         this.temperature +=1 
-      }
-      else{
+      }else{
         return
       }
-    }
-    else {
-      this.temperature
+    }else if (this.powerSavingMode === false) {
+      if(this.temperature < 32) {
+        this.temperature +=1 
+      }else{
+        return
+      }
     }
     
   }
@@ -33,4 +35,11 @@ class Thermostat{
     return this.powerSavingMode = false
   }
 
+  onPowerSavingMode() {
+    return this.powerSavingMode = true
+  }
+
+  reset() {
+    this.temperature = 20
+  }
 }
